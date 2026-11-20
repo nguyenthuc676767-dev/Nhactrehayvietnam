@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIBE MUSIC - Nghe Nhạc Online</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    background: #100e1c;
+}
+
+header {
+    background: linear-gradient(120deg,#7928ca,#ff0080);
+    padding: 30px 15px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 38px;
+    letter-spacing: 3px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+nav {
+    background: #211c35;
+    padding: 17px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff55b8;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    color: #ff62bd;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+section {
+    margin: 35px 0;
+}
+
+.banner {
+    background: linear-gradient(120deg,#30204c,#5c246f);
+    padding: 35px;
+    border-radius: 18px;
+    margin-top: 30px;
+}
+
+.banner h2 {
+    font-size: 32px;
+    color: white;
+}
+
+.banner p {
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #211c35;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    background: #39264f;
+}
+
+.avatar {
+    width: 100%;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: linear-gradient(135deg,#8128bd,#f72585);
+}
+
+.card h3 {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.card p {
+    color: #bbb;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+button {
+    background: linear-gradient(90deg,#7928ca,#f72585);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.player {
+    background: #211c35;
+    padding: 22px;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.player iframe {
+    width: 100%;
+    max-width: 750px;
+    height: 400px;
+    border: none;
+    border-radius: 12px;
+    background: #080710;
+}
+
+.player h3 {
+    color: #ff62bd;
+    margin: 15px;
+}
+
+.search {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #654b83;
+    background: #211c35;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #211c35;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #403650;
+}
+
+th {
+    background: #7828b8;
+    color: white;
+}
+
+tr:hover {
+    background: #39264f;
+}
+
+td a {
+    color: #ff69bd;
+    text-decoration: none;
+}
+
+.list {
+    background: #211c35;
+    padding: 25px 45px;
+    border-radius: 15px;
+    line-height: 2.2;
+}
+
+.list li {
+    color: #eee;
+}
+
+footer {
+    background: #080710;
+    text-align: center;
+    padding: 25px;
+    color: #aaa;
+    margin-top: 40px;
+}
+
+footer strong {
+    color: #ff62bd;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+        font-size: 13px;
+    }
+
+    .player iframe {
+        height: 230px;
+    }
+
+    th, td {
+        padding: 9px 5px;
+        font-size: 12px;
+    }
+
+    .banner h2 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎧 VIBE MUSIC</h1>
+    <p>Thế giới âm nhạc trẻ - Kết nối cảm xúc</p>
+</header>
+
+<nav>
+    <a href="#home">Trang chủ</a>
+    <a href="#artists">Ca sĩ</a>
+    <a href="#music">Bài hát</a>
+    <a href="#player">Nghe nhạc</a>
+</nav>
+
+<div class="container">
+
+<!-- GIỚI THIỆU -->
+<section id="home">
+    <div class="banner">
+        <h2>Chào mừng đến với VIBE MUSIC!</h2>
+        <p>
+            Khám phá những ca khúc nhạc trẻ Việt Nam,
+            những giai điệu đang được yêu thích.
+            Thưởng thức âm nhạc mọi lúc, mọi nơi!
+        </p>
+        <a href="#music">
+            <button>Khám phá ngay ♫</button>
+        </a>
+    </div>
+</section>
+
+<!-- CA SĨ -->
+<section id="artists">
+    <h2>🌟 CA SĨ NỔI BẬT</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img class="avatar"
+            src="https://placehold.co/300x200/542080/ffffff?text=SON+TUNG"
+            alt="Sơn Tùng M-TP">
+            <h3>Sơn Tùng M-TP</h3>
+            <p>V-Pop | Nhạc trẻ</p>
+            <a href="https://www.youtube.com/results?search_query=Son+Tung+MTP"
+            target="_blank">
+                <button>Xem YouTube</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img class="avatar"
+            src="https://placehold.co/300x200/9b286b/ffffff?text=LE+BAO+BINH"
+            alt="Lê Bảo Bình">
+            <h3>Lê Bảo Bình</h3>
+            <p>Nhạc trẻ | Ballad</p>
+            <a href="https://www.youtube.com/results?search_query=Le+Bao+Binh"
+            target="_blank">
+                <button>Xem YouTube</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img class="avatar"
+            src="https://placehold.co/300x200/773f99/ffffff?text=PHAT+HUY+T4"
+            alt="Phát Huy T4">
+            <h3>Phát Huy T4</h3>
+            <p>Nhạc trẻ | V-Pop</p>
+            <a href="https://www.youtube.com/results?search_query=Phat+Huy+T4"
+            target="_blank">
+                <button>Xem YouTube</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img class="avatar"
+            src="https://placehold.co/300x200/8b315d/ffffff?text=H2K"
+            alt="H2K">
+            <h3>H2K</h3>
+            <p>Nhạc trẻ | Remix</p>
+            <a href="https://www.youtube.com/results?search_query=H2K+Vietnam"
+            target="_blank">
+                <button>Xem YouTube</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <img class="avatar"
+            src="https://placehold.co/300x200/423d9b/ffffff?text=NGUYEN+VI"
+            alt="Nguyễn Vĩ">
+            <h3>Nguyễn Vĩ</h3>
+            <p>Nhạc trẻ Việt Nam</p>
+            <a href="https://www.youtube.com/results?search_query=Nguyen+Vi+ca+si"
+            target="_blank">
+                <button>Xem YouTube</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- DANH SÁCH NHẠC -->
+<section id="music">
+    <h2>🎵 DANH SÁCH BÀI HÁT</h2>
+
+    <input type="text" id="search"
+    class="search"
+    placeholder="🔍 Tìm tên bài hát hoặc ca sĩ..."
+    onkeyup="searchMusic()">
+
+    <table id="musicTable">
+        <tr>
+            <th>STT</th>
+            <th>Bài hát</th>
+            <th>Ca sĩ</th>
+            <th>YouTube</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>Chúng Ta Của Hiện Tại</td>
+            <td>Sơn Tùng M-TP</td>
+            <td><a href="#" onclick="playSong('psZ1g9fMfeo','Chúng Ta Của Hiện Tại');return false;">▶ Phát</a></td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Bước Qua Đời Nhau</td>
+            <td>Lê Bảo Bình</td>
+            <td><a href="https://www.youtube.com/results?search_query=Le+Bao+Binh+Buoc+Qua+Doi+Nhau" target="_blank">▶ Nghe</a></td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Pháo Hồng</td>
+            <td>Phát Huy T4</td>
+            <td><a href="https://www.youtube.com/results?search_query=Phat+Huy+T4+Phao+Hong" target="_blank">▶ Nghe</a></td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td>Thức Giấc</td>
+            <td>H2K</td>
+            <td><a href="https://www.youtube.com/results?search_query=H2K+Thuc+Giac" target="_blank">▶ Nghe</a></td>
+        </tr>
+
+        <tr>
+            <td>5</td>
+            <td>Nhạc Nguyễn Vĩ</td>
+            <td>Nguyễn Vĩ</td>
+            <td><a href="https://www.youtube.com/results?search_query=Nguyen+Vi+nhac" target="_blank">▶ Nghe</a></td>
+        </tr>
+    </table>
+</section>
+
+<!-- TRÌNH PHÁT NHẠC -->
+<section id="player">
+    <h2>🎧 TRÌNH PHÁT NHẠC TRỰC TUYẾN</h2>
+
+    <div class="player">
+        <h3 id="songTitle">Chúng Ta Của Hiện Tại</h3>
+
+        <iframe
+            id="youtubePlayer"
+            src="https://www.youtube-nocookie.com/embed/psZ1g9fMfeo"
+            title="Trình phát nhạc YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+        <p style="margin-top:15px">
+            Chọn bài hát để thưởng thức âm nhạc ngay tại đây!
+        </p>
+
+        <p style="margin-top:10px">
+            <a href="https://www.youtube.com/" target="_blank">
+                Mở YouTube ↗
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- DANH SÁCH THỂ LOẠI -->
+<section>
+    <h2>💜 THỂ LOẠI ÂM NHẠC</h2>
+
+    <ol class="list">
+        <li>Nhạc trẻ Việt Nam</li>
+        <li>Nhạc Ballad tâm trạng</li>
+        <li>Nhạc Remix sôi động</li>
+        <li>Nhạc tình yêu</li>
+        <li>Nhạc TikTok thịnh hành</li>
+    </ol>
+</section>
+
+</div>
+
+<footer>
+    <h3><strong>VIBE MUSIC 🎶</strong></h3>
+    <p>Website nghe nhạc trẻ Việt Nam</p>
+    <p>© 2026 - Thiết kế bằng HTML, CSS và JavaScript</p>
+</footer>
+
+<script>
+
+// Phát bài hát trên trình phát YouTube
+function playSong(id, name) {
+    document.getElementById("youtubePlayer").src =
+        "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1";
+
+    document.getElementById("songTitle").innerText = name;
+
+    document.getElementById("player").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// Tìm kiếm bài hát
+function searchMusic() {
+    let input = document.getElementById("search");
+    let filter = input.value.toLowerCase();
+
+    let table = document.getElementById("musicTable");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let text = rows[i].innerText.toLowerCase();
+
+        rows[i].style.display =
+            text.includes(filter) ? "" : "none";
+    }
+}
+
+</script>
+
+</body>
+</html>
